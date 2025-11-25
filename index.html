@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical Hygiene Quiz - 558 Questions</title>
+  <style>
+    :root {
+      --color-white: rgba(255, 255, 255, 1);
+      --color-black: rgba(0, 0, 0, 1);
+      --color-cream-50: rgba(252, 252, 249, 1);
+      --color-cream-100: rgba(255, 255, 253, 1);
+      --color-gray-200: rgba(245, 245, 245, 1);
+      --color-gray-300: rgba(167, 169, 169, 1);
+      --color-gray-400: rgba(119, 124, 124, 1);
+      --color-slate-500: rgba(98, 108, 113, 1);
+      --color-brown-600: rgba(94, 82, 64, 1);
+      --color-charcoal-700: rgba(31, 33, 33, 1);
+      --color-charcoal-800: rgba(38, 40, 40, 1);
+      --color-slate-900: rgba(19, 52, 59, 1);
+      --color-teal-300: rgba(50, 184, 198, 1);
+      --color-teal-400: rgba(45, 166, 178, 1);
+      --color-teal-500: rgba(33, 128, 141, 1);
+      --color-teal-600: rgba(29, 116, 128, 1);
+      --color-teal-700: rgba(26, 104, 115, 1);
+      --color-red-400: rgba(255, 84, 89, 1);
+      --color-red-500: rgba(192, 21, 47, 1);
+      --color-brown-600-rgb: 94, 82, 64;
+      --color-teal-500-rgb: 33, 128, 141;
+      --color-slate-900-rgb: 19, 52, 59;
+      --color-background: var(--color-cream-50);
+      --color-surface: var(--color-cream-100);
+      --color-text: var(--color-slate-900);
+      --color-text-secondary: var(--color-slate-500);
+      --color-primary: var(--color-teal-500);
+      --color-primary-hover: var(--color-teal-600);
+      --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+      --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+      --color-btn-primary-text: var(--color-cream-50);
+      --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+      --color-error: var(--color-red-500);
+      --color-success: var(--color-teal-500);
+      --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-size-sm: 12px;
+      --font-size-base: 14px;
+      --font-size-lg: 16px;
+      --font-size-xl: 18px;
+      --font-size-2xl: 20px;
+      --font-size-3xl: 24px;
+      --font-size-4xl: 30px;
+      --font-weight-medium: 500;
+      --font-weight-semibold: 550;
+      --font-weight-bold: 600;
+      --space-8: 8px;
+      --space-12: 12px;
+      --space-16: 16px;
+      --space-20: 20px;
+      --space-24: 24px;
+      --space-32: 32px;
+      --radius-base: 8px;
+      --radius-lg: 12px;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-gray-400-rgb: 119, 124, 124;
+        --color-teal-300-rgb: 50, 184, 198;
+        --color-gray-300-rgb: 167, 169, 169;
+        --color-gray-200-rgb: 245, 245, 245;
+        --color-background: var(--color-charcoal-700);
+        --color-surface: var(--color-charcoal-800);
+        --color-text: var(--color-gray-200);
+        --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+        --color-primary: var(--color-teal-300);
+        --color-primary-hover: var(--color-teal-400);
+        --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+        --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+        --color-btn-primary-text: var(--color-slate-900);
+        --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+        --color-error: var(--color-red-400);
+        --color-success: var(--color-teal-300);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family-base);
+      background-color: var(--color-background);
+      color: var(--color-text);
+      line-height: 1.5;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--space-20);
+      margin-bottom: var(--space-32);
+    }
+
+    .topic-box {
+      background: linear-gradient(135deg, rgba(33, 128, 141, 0.1) 0%, rgba(50, 184, 198, 0.05) 100%);
+      border: 2px solid var(--color-card-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-24);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .topic-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      border-color: var(--color-primary);
+    }
+
+    .topic-box.selected {
+      background: linear-gradient(135deg, rgba(33, 128, 141, 0.25) 0%, rgba(50, 184, 198, 0.15) 100%);
+      border-color: var(--color-primary);
+      box-shadow: 0 4px 12px rgba(33, 128, 141, 0.3);
+    }
+
+    .topic-box.selected::after {
+      content: '✓';
+      position: absolute;
+      top: var(--space-12);
+      right: var(--space-12);
+      width: 28px;
+      height: 28px;
+      background-color: var(--color-primary);
+      color: var(--color-btn-primary-text);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-lg);
+    }
+
+    .topic-number {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-secondary);
+      font-weight: var(--font-weight-medium);
+      margin-bottom: var(--space-8);
+    }
+
+    .topic-name {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text);
+      margin-bottom: var(--space-12);
+      line-height: 1.4;
+    }
+
+    .topic-questions {
+      font-size: var(--font-size-base);
+      color: var(--color-primary);
+      font-weight: var(--font-weight-medium);
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: var(--space-32);
+      padding: var(--space-16);
+      color: var(--color-text-secondary);
+      font-size: var(--font-size-sm);
+    }
+
+    .report-btn {
+      position: fixed;
+      bottom: 60px;
+      right: 20px;
+      background-color: var(--color-error);
+      color: var(--color-white);
+      padding: var(--space-12) var(--space-20);
+      border-radius: var(--radius-base);
+      border: none;
+      cursor: pointer;
+      font-weight: var(--font-weight-semibold);
+      box-shadow: 0 4px 12px rgba(192, 21, 47, 0.3);
+      transition: all 0.2s;
+      z-index: 1000;
+    }
+
+    .report-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(192, 21, 47, 0.4);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background-color: var(--color-surface);
+      border-radius: var(--radius-lg);
+      padding: var(--space-32);
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-header {
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
+      margin-bottom: var(--space-16);
+      color: var(--color-text);
+    }
+
+    .modal-body {
+      margin-bottom: var(--space-24);
+    }
+
+    .modal-body textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: var(--space-12);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-base);
+      font-family: var(--font-family-base);
+      font-size: var(--font-size-base);
+      background-color: var(--color-surface);
+      color: var(--color-text);
+      resize: vertical;
+    }
+
+    .modal-body textarea:focus {
+      outline: none;
+      border-color: var(--color-primary);
+    }
+
+    .modal-footer {
+      display: flex;
+      gap: var(--space-12);
+    }
+
+    .modal-footer button {
+      flex: 1;
+      padding: var(--space-12);
+      border: none;
+      border-radius: var(--radius-base);
+      font-weight: var(--font-weight-semibold);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-cancel {
+      background-color: var(--color-secondary);
+      color: var(--color-text);
+    }
+
+    .btn-cancel:hover {
+      background-color: var(--color-secondary-hover);
+    }
+
+    .btn-submit {
+      background-color: var(--color-primary);
+      color: var(--color-btn-primary-text);
+    }
+
+    .btn-submit:hover {
+      background-color: var(--color-primary-hover);
+    }
+
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    .card {
+      background-color: var(--color-surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-card-border);
+      box-shadow: var(--shadow-md);
+      padding: var(--space-32);
+    }
+
+    h1 {
+      font-size: var(--font-size-4xl);
+      font-weight: var(--font-weight-bold);
+      margin-bottom: var(--space-24);
+      text-align: center;
+      color: var(--color-primary);
+    }
+
+    .form-group {
+      margin-bottom: var(--space-24);
+    }
+
+    label {
+      display: block;
+      margin-bottom: var(--space-8);
+      font-weight: var(--font-weight-medium);
+      font-size: var(--font-size-base);
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: var(--space-12);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-base);
+      font-size: var(--font-size-base);
+      font-family: var(--font-family-base);
+      background-color: var(--color-surface);
+      color: var(--color-text);
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: var(--color-primary);
+    }
+
+    .info-box {
+      background-color: var(--color-secondary);
+      border-radius: var(--radius-base);
+      padding: var(--space-16);
+      margin-bottom: var(--space-24);
+      text-align: center;
+    }
+
+    .info-label {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: var(--space-8);
+    }
+
+    .info-value {
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text);
+    }
+
+    .btn {
+      width: 100%;
+      padding: var(--space-16);
+      border: none;
+      border-radius: var(--radius-base);
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      cursor: pointer;
+      font-family: var(--font-family-base);
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background-color: var(--color-primary);
+      color: var(--color-btn-primary-text);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--color-primary-hover);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .error-message {
+      color: var(--color-error);
+      font-size: var(--font-size-sm);
+      margin-top: var(--space-8);
+      text-align: center;
+    }
+
+    .quiz-layout {
+      display: flex;
+      gap: 24px;
+    }
+
+    .quiz-main-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .question-navigator {
+      width: 320px;
+      flex-shrink: 0;
+      padding: 24px;
+      max-height: calc(100vh - 80px);
+      overflow-y: auto;
+      position: sticky;
+      top: 20px;
+    }
+
+    .quiz-header {
+      text-align: center;
+      margin-bottom: var(--space-32);
+    }
+
+    .topic-name {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--space-8);
+    }
+
+    .question-number {
+      font-size: var(--font-size-lg);
+      color: var(--color-text-secondary);
+    }
+
+    .question-text {
+      font-size: var(--font-size-xl);
+      font-weight: var(--font-weight-medium);
+      margin-bottom: var(--space-24);
+      line-height: 1.6;
+    }
+
+    .options {
+      margin-bottom: var(--space-24);
+    }
+
+    .option {
+      background-color: var(--color-secondary);
+      border: 2px solid transparent;
+      border-radius: var(--radius-base);
+      padding: var(--space-16);
+      margin-bottom: var(--space-12);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-12);
+    }
+
+    .option:hover {
+      border-color: var(--color-primary);
+    }
+
+    .option.correct {
+      background-color: rgba(33, 128, 141, 0.15);
+      border-color: var(--color-success);
+    }
+
+    .option.incorrect {
+      background-color: rgba(192, 21, 47, 0.15);
+      border-color: var(--color-error);
+    }
+
+    .option.disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    .option input {
+      margin-top: 4px;
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .option label {
+      margin: 0;
+      cursor: pointer;
+      flex: 1;
+    }
+
+    .progress-section {
+      margin-bottom: var(--space-24);
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: var(--space-8);
+      font-size: var(--font-size-sm);
+      color: var(--color-text-secondary);
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 24px;
+      background-color: var(--color-secondary);
+      border-radius: var(--radius-base);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background-color: var(--color-success);
+      transition: width 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-btn-primary-text);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-bold);
+    }
+
+    .navigation {
+      display: flex;
+      gap: var(--space-16);
+    }
+
+    .btn-nav {
+      flex: 1;
+      padding: var(--space-12);
+      border: 1px solid var(--color-border);
+      background-color: var(--color-surface);
+      color: var(--color-text);
+      font-weight: var(--font-weight-medium);
+    }
+
+    .btn-nav:hover:not(:disabled) {
+      background-color: var(--color-secondary);
+    }
+
+    .btn-nav:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .navigator-title {
+      font-size: 20px;
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text);
+      margin-bottom: 20px;
+      text-align: center;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--color-border);
+    }
+
+    .question-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+    }
+
+    .question-box {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--color-secondary);
+      border: 2px solid transparent;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: var(--font-weight-semibold);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: var(--color-text);
+    }
+
+    .question-box:hover {
+      transform: scale(1.1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .question-box.current {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 2px rgba(33, 128, 141, 0.2);
+      transform: scale(1.05);
+    }
+
+    .question-box.correct {
+      background-color: rgba(33, 128, 141, 0.2);
+      color: var(--color-success);
+      border-color: var(--color-success);
+    }
+
+    .question-box.incorrect {
+      background-color: rgba(192, 21, 47, 0.2);
+      color: var(--color-error);
+      border-color: var(--color-error);
+    }
+
+    .question-box.answered {
+      background-color: rgba(33, 128, 141, 0.1);
+    }
+
+    .results {
+      text-align: center;
+    }
+
+    .score-display {
+      background-color: var(--color-secondary);
+      border-radius: var(--radius-lg);
+      padding: var(--space-32);
+      margin: var(--space-32) 0;
+    }
+
+    .score-label {
+      font-size: var(--font-size-lg);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-16);
+    }
+
+    .score-value {
+      font-size: var(--font-size-4xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--space-8);
+    }
+
+    .score-details {
+      font-size: var(--font-size-lg);
+      color: var(--color-text);
+    }
+
+    @media (max-width: 768px) {
+      .quiz-layout {
+        flex-direction: column;
+      }
+
+      .question-navigator {
+        width: 100%;
+        position: static;
+        max-height: none;
+        order: -1;
+      }
+
+      .question-grid {
+        grid-template-columns: repeat(10, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Home Page -->
+    <div id="homePage" class="page active">
+      <div class="card">
+        <h1>Medical Quiz Application</h1>
+        
+        <div class="form-group">
+          <label for="userName">Enter Your Name</label>
+          <input type="text" id="userName" placeholder="Your name" required>
+        </div>
+
+        <div class="info-box">
+          <div class="info-label">Total Available Questions</div>
+          <div class="info-value">558</div>
+        </div>
+
+        <h2 style="margin: var(--space-32) 0 var(--space-20) 0; font-size: var(--font-size-2xl); color: var(--color-text);">Select Topics</h2>
+        
+        <div class="topics-grid" id="topicsGrid"></div>
+
+        <button class="btn btn-primary" onclick="startQuiz()" id="startBtn">Start Quiz</button>
+        <div id="nameError" class="error-message" style="display: none;">Please enter your name and select at least one topic.</div>
+      </div>
+      <div class="footer">@frostyfudge</div>
+    </div>
+
+    <!-- Quiz Page -->
+    <div id="quizPage" class="page">
+      <button class="report-btn" onclick="openReportModal()">⚠ Report Wrong Answer</button>
+      <div class="quiz-layout">
+        <div class="quiz-main-content card">
+          <div class="quiz-header">
+            <div class="topic-name">Occupational Health &amp; Diseases</div>
+            <div class="question-number" id="questionNumber">Question 1 of 123</div>
+          </div>
+
+          <div class="question-text" id="questionText"></div>
+
+          <div class="options" id="optionsContainer"></div>
+
+          <div class="progress-section">
+            <div class="progress-label">
+              <span>Progress</span>
+              <span id="progressText">0%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="progressFill" style="width: 0%;">0%</div>
+            </div>
+          </div>
+
+          <div id="answerError" class="error-message" style="display: none;">Please select an answer before proceeding.</div>
+
+          <div class="navigation">
+            <button class="btn btn-nav" id="prevBtn" onclick="previousQuestion()" disabled>Previous</button>
+            <button class="btn btn-nav btn-primary" id="nextBtn" onclick="nextQuestion()">Next</button>
+          </div>
+        </div>
+        
+        <div class="question-navigator card">
+          <h3 class="navigator-title">Question Navigator</h3>
+          <div class="question-grid" id="questionGrid"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Page -->
+    <div id="resultsPage" class="page">
+      <div class="card">
+        <div class="results">
+          <h1>Quiz Completed!</h1>
+          
+          <div class="score-display">
+            <div class="score-label">Your Score</div>
+            <div class="score-value" id="finalScore">0%</div>
+            <div class="score-details" id="scoreDetails">0 out of 123 correct</div>
+          </div>
+
+          <button class="btn btn-primary" onclick="restartQuiz()">Restart Test</button>
+        </div>
+      </div>
+      <div class="footer">@frostyfudge</div>
+    </div>
+
+    <!-- Report Modal -->
+    <div id="reportModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">Report Wrong Answer</div>
+        <div class="modal-body">
+          <p style="margin-bottom: var(--space-12); color: var(--color-text);"><strong>Question:</strong> <span id="reportQuestion"></span></p>
+          <label for="reportText" style="display: block; margin-bottom: var(--space-8); font-weight: var(--font-weight-medium);">Your Correction/Feedback:</label>
+          <textarea id="reportText" placeholder="Please provide the correct answer or your feedback..."></textarea>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-cancel" onclick="closeReportModal()">Cancel</button>
+          <button class="btn-submit" onclick="submitReport()">Submit Report</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
